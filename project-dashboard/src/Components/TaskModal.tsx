@@ -81,14 +81,7 @@ const TaskModal: React.FC<TaskModalProps> = ({ task, closeModal }) => {
     marginBottom: '10px',
   };
 
-  const selectStyle: React.CSSProperties = {
-    width: '100%',
-    padding: '10px',
-    border: '1px solid #ccc',
-    borderRadius: '4px',
-    fontSize: '1rem',
-    marginBottom: '10px',
-  };
+  
 
   const errorStyle: React.CSSProperties = {
     color: 'red',
