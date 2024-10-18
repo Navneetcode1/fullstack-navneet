@@ -17,19 +17,19 @@ const TaskModal: React.FC<TaskModalProps> = ({ task, closeModal }) => {
       title: '',
       description: '',
       assignee: '',
-      priority: 'Low', // This can be removed if priority is not needed for the book form
-      status: 'To Do',  // Same for status, remove if not needed
+      priority: 'Low',
+      status: 'To Do',
       dueDate: '',
     },
     validationSchema: taskValidationSchema, 
     onSubmit: (values) => {
       if (task && task.id) {
-        // Update an existing task
+       
         setTasks((prevTasks) =>
           prevTasks.map((t) => (t.id === task.id ? { ...values, id: task.id } : t))
         );
       } else {
-        // Add a new task/book
+     
         setTasks((prevTasks) => [
           ...prevTasks,
           { ...values, id: Date.now().toString() },
@@ -78,6 +78,15 @@ const TaskModal: React.FC<TaskModalProps> = ({ task, closeModal }) => {
     fontSize: '1rem',
     height: '100px',
     resize: 'vertical',
+    marginBottom: '10px',
+  };
+
+  const selectStyle: React.CSSProperties = {
+    width: '100%',
+    padding: '10px',
+    border: '1px solid #ccc',
+    borderRadius: '4px',
+    fontSize: '1rem',
     marginBottom: '10px',
   };
 
@@ -152,6 +161,36 @@ const TaskModal: React.FC<TaskModalProps> = ({ task, closeModal }) => {
             <div style={errorStyle}>{formik.errors.assignee}</div>
           )}
         </div>
+
+        {/* <div>
+          <label htmlFor="priority">Priority: </label>
+          <select
+            id="priority"
+            name="priority"
+            style={selectStyle}
+            value={formik.values.priority}
+            onChange={formik.handleChange}
+          >
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+        </div> */}
+
+        {/* <div>
+          <label htmlFor="status">Status: </label>
+          <select
+            id="status"
+            name="status"
+            style={selectStyle}
+            value={formik.values.status}
+            onChange={formik.handleChange}
+          >
+            <option value="To Do">To Do</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+          </select>
+        </div> */}
 
         <div>
           <label htmlFor="dueDate"> Date (required): </label>
